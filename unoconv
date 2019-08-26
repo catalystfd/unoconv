@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 ### This program is free software; you can redistribute it and/or modify
 ### it under the terms of the GNU General Public License as published by
@@ -1066,21 +1066,6 @@ class Convertor:
                     user_props.setPropertyValue(prop, value)
 
             ### Update document indexes
-            phase = "update-indexes"
-            for ii in range(2):
-                # At first update Table-of-Contents.
-                # ToC grows, so page numbers grows too.
-                # On second turn update page numbers in ToC.
-                try:
-                    document.refresh()
-                    indexes = document.getDocumentIndexes()
-                except AttributeError:
-                    # the document doesn't implement the XRefreshable and/or
-                    # XDocumentIndexesSupplier interfaces
-                    break
-                else:
-                    for i in range(0, indexes.getCount()):
-                        indexes.getByIndex(i).update()
 
             info(1, "Selected output format: %s" % outputfmt)
             info(2, "Selected office filter: %s" % outputfmt.filter)
